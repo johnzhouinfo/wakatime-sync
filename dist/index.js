@@ -855,7 +855,7 @@ module.exports = (function(e, t) {
       }
       if (typeof d1 !== 'undefined') {
         // return a.get(`${g}/${d}.send`, { params: { text: e, desp: t } }).then(e => e.data)
-        return a.get(`${g1}`, { params: { token:d1, text: e, content: t } }).then(e => e.data)
+        return a.get(`${g1}`, { params: { token:d1, text: e, content: t, template:'markdown' } }).then(e => e.data)
       }
     }
     main()
