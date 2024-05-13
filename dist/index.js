@@ -795,10 +795,11 @@ module.exports = (function(e, t) {
     const s = r(629)
     const { Octokit: o } = r(0)
     const a = r(53)
-    const { WAKATIME_API_KEY: u, GH_TOKEN: p, GIST_ID: c, SCU_KEY: d } = process.env
+    const { WAKATIME_API_KEY: u, GH_TOKEN: p, GIST_ID: c, SCU_KEY: d, PUSH_PLUS_TOKEN: d1 } = process.env
     const l = 'https://wakatime.com/api/v1'
     const m = `${l}/users/current/summaries`
     const g = `https://sc.ftqq.com`
+    const g1 = `https://www.pushplus.plus/send`
     const h = new n(u)
     const y = new o({ auth: `token ${p}` })
     function getItemContent(e, t) {
@@ -851,6 +852,10 @@ module.exports = (function(e, t) {
     async function sendMessageToWechat(e, t) {
       if (typeof d !== 'undefined') {
         return a.get(`${g}/${d}.send`, { params: { text: e, desp: t } }).then(e => e.data)
+      }
+      if (typeof d1 !== 'undefined') {
+        // return a.get(`${g}/${d}.send`, { params: { text: e, desp: t } }).then(e => e.data)
+        return a.get(`${g1}`, { params: { token:d1, text: e, content: t } }).then(e => e.data)
       }
     }
     main()
